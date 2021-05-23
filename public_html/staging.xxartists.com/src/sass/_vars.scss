@@ -1,0 +1,25 @@
+$super: 1920px;
+$desktop: 1499px;
+$laptop: 1199px;
+$tablet: 991px;
+$mobile: 767px;
+$phone: 480px;
+$iphone5: 320px;
+$bootstrap-sass-asset-helper: true !important;
+
+$use-all: true;
+$font-family-sans-serif: "Roboto Condensed", sans-serif;
+$fa-font-path: "/webfonts/fontawesome" !default; // Fontawesome
+
+// Colors
+$hover: #9a9a9a;
+$body-bg: #f7f7f6;
+$red: #ea231a;
+$dark-red: #771425;
+$black: #1e1520;
+$yellow: #fca920;
+$green: #23a79f;
+$dark-green: #0b8282;
+$white: #e2e1df;
+$offwhite: #e1e0db;
+$dark: #4c4c4c;

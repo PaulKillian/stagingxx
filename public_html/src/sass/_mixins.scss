@@ -1,0 +1,166 @@
+@mixin fadein() {
+  opacity: 1 !important;
+  transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+}
+@mixin flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@mixin scale($value) {
+  -webkit-transform: scale3d($value, $value, $value);
+  -moz-transform: scale3d($value, $value, $value);
+  -ms-transform: scale3d($value, $value, $value);
+  -o-transform: scale3d($value, $value, $value);
+  transform: scale3d($value, $value, $value);
+}
+@mixin translate($x, $y) {
+  -ms-transform: translate($x, $y);
+  /* IE 9 */
+  -webkit-transform: translate($x, $y);
+  /* Safari */
+  -moz-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+/********************* MIXINS **********************/
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  -ms-appearance: $value;
+  -o-appearance: $value;
+  appearance: $value;
+}
+@mixin contrast($value) {
+  -webkit-filter: contrast($value);
+  -moz-filter: contrast($value);
+  -o-filter: contrast($value);
+  -ms-filter: contrast($value);
+  filter: contrast($value);
+}
+@mixin saturate($value) {
+  -webkit-filter: saturate($value);
+  -moz-filter: saturate($value);
+  -o-filter: saturate($value);
+  -ms-filter: saturate($value);
+  filter: saturate($value);
+}
+@mixin blur($value) {
+  -webkit-filter: blur($value);
+  -moz-filter: blur($value);
+  -o-filter: blur($value);
+  -ms-filter: blur($value);
+  filter: blur($value);
+}
+@mixin invert($value) {
+  -webkit-filter: invert($value);
+  -moz-filter: invert($value);
+  -ms-filter: invert($value);
+  -o-filter: invert($value);
+  filter: invert($value);
+}
+@mixin grayscale($value) {
+  -webkit-filter: grayscale($value);
+  -moz-filter: grayscale($value);
+  -ms-filter: grayscale($value);
+  -o-filter: grayscale($value);
+  filter: grayscale($value);
+  /* Firefox 10+ */
+  filter: gray;
+  /* IE 6-9 */
+}
+@mixin blend-mode($value) {
+  -webkit-background-blend-mode: $value;
+  background-blend-mode: $value;
+}
+@mixin transform-style($arguments) {
+  -webkit-transform-style: $arguments;
+  -moz-transform-style: $arguments;
+  transform-style: $arguments;
+}
+@mixin backface-visibility($value) {
+  -webkit-backface-visibility: $value;
+  backface-visibility: $value;
+}
+@mixin border-image($value) {
+  border-image: $value;
+  border-image-slice: 1;
+}
+@mixin transform-origin($value) {
+  -ms-transform-origin: $value;
+  -webkit-transform-origin: $value;
+  transform-origin: $value;
+}
+// Placeholder text
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: "";
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation: $animations;
+  -o-animation: $animations;
+  animation: $animations;
+}
+@mixin animation_name($animate) {
+  -webkit-animation-name: $animate;
+  -moz-animation-name: $animate;
+  -o-animation-name: $animate;
+  animation-name: $animate;
+}
+@mixin animation_duration($animate) {
+  -webkit-animation-duration: $animate;
+  -moz-animation-duration: $animate;
+  -o-animation-duration: $animate;
+  animation-duration: $animate;
+}
+@mixin animation_delay($value) {
+  -webkit-animation-delay: $value;
+  /* Safari 4.0 - 8.0 */
+  animation-delay: $value;
+}
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}

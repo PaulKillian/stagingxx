@@ -1,0 +1,123 @@
+// Header Layout
+#header {
+  nav {
+    padding: 0;
+    background: #eff0f1;
+    .navbar-toggler {
+      border: 0 solid #fff;
+      height: 40px;
+      width: 40px;
+      padding: 0;
+      margin-right: 15px;
+      position: relative;
+      .hamburger-wrapper {
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        span {
+          display: block;
+          &:before {
+            content: "";
+            cursor: pointer;
+            background: $red;
+            left: 0;
+            height: 3px;
+            position: absolute;
+            width: 100%;
+            transition: transform 0.2s ease-in-out;
+            transform-origin: 22%;
+          }
+          &:first-child:before {
+            top: -8px;
+          }
+          &:nth-child(2):before {
+            top: 0;
+          }
+          &:last-child:before {
+            top: 8px;
+          }
+        }
+      }
+      &:not(.collapsed) .hamburger-wrapper {
+        span {
+          &:first-child:before {
+            @include transform(rotate(45deg));
+          }
+          &:nth-child(2):before {
+            width: 0;
+          }
+          &:last-child:before {
+            @include transform(rotate(-45deg));
+          }
+        }
+      }
+    }
+    .navbar-collapse {
+      background-color: #eff0f1;
+      &.animated {
+        @media (max-width: $mobile) {
+          -webkit-animation: none !important;
+          -moz-animation: none !important;
+          -o-animation: none !important;
+          animation: none !important;
+        }
+      }
+      @media (max-width: $mobile) {
+        background-color: #dcdcdc; 
+        font-size: 1.5em;
+        text-align: center;
+        .navbar-nav {
+              padding: 2em;
+            }
+      }
+    }
+    .pagination {
+      margin-bottom: 0;
+      width: 150px;
+      margin-left: 5px;
+      .page-item {
+        .page-link {
+          background: #dd1d1b;
+          border: 0;
+          border-radius: 50%;
+          margin: 0.25rem 5px;
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    .navbar-nav {
+      .nav-link {
+        color: #000001;
+        padding: 0.5rem;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          width: 0;
+          margin: auto;
+          background-color: $red;
+          transition: width 0.5s ease;
+        }
+        &:hover:after,
+        &.active:after {
+          width: 100%;
+        }
+      }
+    }
+    .navbar-brand {
+      font-size: 28px;
+      position: absolute;
+      top: 60px;
+      text-orientation: mixed;
+      writing-mode: vertical-rl;
+      img {
+        max-width: 40px;
+      }
+    }
+  }
+}
