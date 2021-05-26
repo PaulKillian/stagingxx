@@ -2,9 +2,6 @@
 Options -MultiViews
 	
     RewriteEngine On 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^([^\.]+)$ $1.html [NC,L]
- 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.html [QSA,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.(php|html)\ HTTP [NC]
+    RewriteRule (^|/)index\.(php|html)$ /%1 [NC,R=301,L]
 </IfModule>
