@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <header id="header" data-app="lists">
+  <header id="header">
     <nav class="navbar navbar-expand-md fixed-top navbar-light">
       <ul class="pagination pagination-sm animated slideInLeft">
         <li class="page-item"><a class="page-link"></a></li>
@@ -41,43 +41,45 @@
       </div>
     </nav>
   </header>
-  <section class="contact-clean" style="background-color: white; padding-top: 200px;">
-    <form data-bss-recipient="9dbc2e25893510eeaa3500221851d153">
-      <h2 class="text-center"></h2>
-      <div class="d-flex flex-wrap justify-content-between col-6">
-        <div class="form-group col-6">
-          <input type="text" class="form-control" name="name" placeholder="First Name*" />
-        </div>
-        <div class="form-group col-6">
-          <input type="text" class="form-control" name="name" placeholder="Last Name*" />
-        </div>
-        <img class="col-3" scr="/assets/300.png" />
-      </div>
-      <div class="d-flex flex-wrap justify-content-between col-6">
-        <div class="form-group col-6">
-          <input type="text" class="form-control" name="name" placeholder="Position Title*"  />
-        </div>
-        <div class="form-group col-6">
-          <input type="email" class="form-control" name="name" placeholder="Email*"  />
-        </div>
-        <img class="col-3" scr="/assets/300.png" />
-      </div>
-      <small class="form-text text-danger"></small>
-      </div>
-      <div class="d-flex flex-wrap justify-content-between col-6">
-        <div class="form-group col-6">
-          <textarea class="form-control" name="message" placeholder="Message" rows="6"></textarea>
-        </div>
-        <div class="col-6">
-          <input type="file" class="form-control-file custom" />
-          <input type="file" class="form-control-file custom1" />
-          <input type="file" class="form-control-file mb-3 custom2" />
+  <section class="col-12 h-100 d-flex justify-content-center ">
+    <div>
+      <h1 style="font-size: 200px; line-height: 90%;"><span style="margin-left: 140px;">JOIN</span><br><span class="mr-4">TEAM <span style="color: rgb(221, 29, 27);">XX!</span></span></h1>
+    </div>
+    <div style="border-style: solid; border-width: 10px; background-color: white;">
+      <form class="p-5" data-bss-recipient="9dbc2e25893510eeaa3500221851d153">
+        <h2 class="text-center"></h2>
+        <div class="d-flex flex-wrap">
+          <div class="form-group mr-3">
+            <input type="text" class="form-control" name="name" placeholder="First Name*" />
+          </div>
           <div class="form-group">
-            <button style="background-color: rgb(221, 29, 27); color: white; border: none;" type="submit">SUBMIT</button>
+            <input type="text" class="form-control" name="name" placeholder="Last Name*" />
           </div>
         </div>
-      </div>
-    </form>
+        <div class="d-flex flex-wrap">
+          <div class="form-group mr-3">
+            <input type="text" class="form-control" name="name" placeholder="Position Title*"  />
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" name="name" placeholder="Email*"  />
+          </div>
+        </div>
+        <div class="d-flex flex-wrap">
+          <div class="form-group mr-3">
+            <textarea class="form-control" name="message" placeholder="Message" rows="6"></textarea>
+          </div>
+          <div>
+            <input type="file" class="form-control-file custom" />
+            <input type="file" class="form-control-file custom1" />
+            <input type="file" class="form-control-file mb-3 custom2" />
+            <div class="form-group">
+              <button style="background-color: rgb(221, 29, 27); 
+              color: white; border: none;" type="submit">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </section>
 </body>
 </html>
