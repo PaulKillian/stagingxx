@@ -39,8 +39,8 @@ const clearAndSubmission = () => {
   main.innerHTML = `
   <div style="height: 50vh;" class="d-flex flex-column align-items-start">
     <div class="d-flex flex-wrap">
-    <h1 style="font-size: 200px;">SUBMISSION</h1>
-    <h1 style="font-size: 200px; color: rgb(221, 29, 27);">CONFIRMED!</h1>
+    <h1 class="sub-size">SUBMISSION</h1>
+    <h1 class="sub-size color: rgb(221, 29, 27);">CONFIRMED!</h1>
     </div>
     <p>Thank you for reaching out! A team member will be in<br>contact with you shortly. In the meantime,
     please take<br>a look at our site at<span style="color: rgb(221, 29, 27);"> xxartist.com</span>
