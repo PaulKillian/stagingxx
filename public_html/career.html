@@ -35,53 +35,52 @@
       </button>
       <div class="collapse navbar-collapse animated slideInDown delay--5s justify-content-between" id="main-menu">
         <ul class="navbar-nav">
-          <li style="background-color: rgb(221, 29, 27)" class="nav-item hide"><a class="nav-link text-white" 
+          <li style="background-color: rgb(221, 29, 27)" class="nav-item hide"><a class="nav-link text-white p-4" 
             href="https://inspiring-albattani-4f5ec3.netlify.app/">visit XX</a></li>
         </ul>
       </div>
     </nav>
   </header>
   <section id="main" class="col-12 h-100 d-flex justify-content-center align-items-center flex-wrap">
-    <div style="height: 72vh;" class="d-flex flex-column align-items-end">
-      <h1 style="font-size: 200px; line-height: 90%; position: relative; bottom: 8px;"><span style="margin-left: 140px;">JOIN</span><br><span class="mr-4">TEAM <span style="color: rgb(221, 29, 27);">XX!</span></span></h1>
-      <div class="d-flex justify-content-end col-12">
-        <img class="col-12"src="assets/ring_2.png">
-        <p class="col-6">Submit your attachments <br>for EACH position you're<br> interested in.</p>
+    <div id="join" style="height: 72vh;" class="d-flex flex-column align-items-end">
+      <h1 id="join-size" style="font-size: 200px; line-height: 94%; position: relative; top: 11px;"><span style="margin-left: 141px;">JOIN</span><br><span class="mr-5">TEAM <span style="color: rgb(221, 29, 27);">XX!</span></span></h1>
+      <div class="d-flex justify-content-end col-12 mt-4">
+        <img class="col-6 col-md-6 col-lg-6"src="assets/ring_2.png">
+        <p class="col-12 col-md-6 col-lg-6">Submit your attachments <br>for EACH position you're<br> interested in.</p>
     </div>
     </div>
-    <div style="border-style: solid; border-width: 10px; background-color: white;
-      height: 72vh;width: 39vw;">
-      <form enctype="multipart/form-data" class="p-5">
-        <h2 class="text-center"></h2>
-        <div class="d-flex flex-wrap">
-          <div class="form-group mr-3">
-            <input type="text" class="form-control" name="name" placeholder="First Name*" required />
+    <div class="col-12 col-md-12 col-lg-5" style="border-style: solid; border-width: 10px; background-color: white;
+      height: 66vh;">
+      <form enctype="multipart/form-data" class="py-5">
+        <div class="d-flex flex-wrap justify-content-center row">
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
+            <input type="text" class="form-control p-4" name="name" placeholder="First Name*" required />
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="name" placeholder="Last Name*" required />
-          </div>
-        </div>
-        <div class="d-flex flex-wrap">
-          <div class="form-group mr-3">
-            <input type="text" class="form-control" name="name" placeholder="Position Title*"  required/>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" name="name" placeholder="Email*"  required/>
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem">
+            <input type="text" class="form-control p-4" name="name" placeholder="Last Name*" required />
           </div>
         </div>
-        <div class="d-flex flex-wrap">
-          <div class="form-group mr-3">
-            <textarea class="form-control" name="message" placeholder="Message" rows="6"></textarea>
+        <div class="d-flex flex-wrap justify-content-center row">
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
+            <input type="text" class="form-control p-4" name="name" placeholder="Position Title*"  required/>
           </div>
-          <div>
-            <input id="file-selector" type="file" multiple class="form-control-file custom" />
-            <input type="file" class="form-control-file custom1" />
-            <input type="file" class="form-control-file mb-3 custom2" />
-            <div class="form-group">
-              <button style="background-color: rgb(221, 29, 27); 
-              color: white; border: none;" type="submit">SUBMIT</button>
-            </div>
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem">
+            <input type="email" class="form-control p-4" name="name" placeholder="Email*"  required/>
           </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center row">
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
+            <textarea class="form-control" name="message" placeholder="Message" rows="7"></textarea>
+          </div>
+          <div class="form-group" style="width: 40%; margin-bottom: 2rem;">
+            <input id="file-selector" style="height: 27%; padding: 10px; width: 100%" type="file" multiple class="form-control-file mb-3 custom" />
+            <input type="file" style="height: 27%; padding: 10px; width: 100%" class="form-control-file mb-3 custom1" />
+            <input type="file" style="height: 27%; padding: 10px; width: 100%" class="form-control-file mb-3 custom2" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-left: 2.6rem;">
+          <button class="py-3 px-4" style="background-color: rgb(221, 29, 27); 
+          color: white; border: none;" type="submit"><span>Submit</span></button>
         </div>
       </form>
     </div>
@@ -95,5 +94,6 @@
     </ul>
   </footer>
   <script src="js/form.js"></script>
+  <script src="js/script.min.js"></script>
 </body>
 </html>
