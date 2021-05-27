@@ -59,3 +59,12 @@ const loader = () => {
   clearAndSubmission();
   }, 500);
 }
+
+function fileNameReplace(event){
+  const name = document.getElementById(event.target.id); 
+  const fileName = name.files.item(0).name;
+  const label	 = name.nextSibling;
+  const newLabel = label.nextSibling.childNodes[2].id
+  const spanLabel = document.getElementById(newLabel)
+  spanLabel.innerText = fileName
+}
