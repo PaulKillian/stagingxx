@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <header id="header">
+  <header style="opacity: 0" id="header">
     <nav class="navbar navbar-expand-md fixed-top navbar-light">
       <ul class="pagination pagination-sm animated slideInLeft">
         <li class="page-item"><a class="page-link"></a></li>
@@ -35,66 +35,71 @@
       </button>
       <div class="collapse navbar-collapse animated slideInDown delay--5s justify-content-between" id="main-menu">
         <ul class="navbar-nav">
-          <li style="background-color: rgb(221, 29, 27)" class="nav-item hide"><a class="nav-link text-white p-4" 
+          <li style="background-color: rgb(221, 29, 27);" class="nav-item hide"><a class="nav-link text-white p-4" 
             href="https://inspiring-albattani-4f5ec3.netlify.app/">visit XX</a></li>
         </ul>
       </div>
     </nav>
   </header>
-  <section id="main" class="container">
-    <div class="row d-flex align-items-center" style="height: 100vh;">
-      <div class="col-lg d-flex align-items-end justify-content- flex-column" style="height: 66.2vh;">
-        <img style="width: 70%" src="assets/Join_Team_XX.png"/>
-        <div class="d-flex flex-row col-12 mt-4" style="height: 50vh;">
-          <img class="col-6 col-md-6 col-lg-4" style="width: 30%; height: 14vh;" src="assets/ring_2.png">
-          <p class="col-12 col-md-6 col-lg-7">Submit your attachments <br>for EACH position you're<br> interested in.</p>
-        </div>
+  <section id="main" class="container-fluid h-100 d-flex justify-content-center">
+    <div class="row">
+      <div class="col-md-2 m-auto">
+        <img class="img-fluid position-relative" style="right: 1rem; top: 1rem;"
+        src="assets/Elipse Pattern.png">
       </div>
-      <div class="col-12 col-md-12 col-lg-6" style="border-style: solid; border-width: 10px; background-color: white;
-      height: 66vh;">
-        <form enctype="multipart/form-data" class="py-5">
-          <div class="d-flex flex-wrap justify-content-center row">
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
-              <input type="text" class="form-control p-4" name="name" placeholder="First Name*" required />
+      <div class="col-md-3 m-auto">
+        <div>
+          <img class="img-fluid" src="assets/Join_Team_XX.png">
+        </div>
+        <div class="d-flex">
+          <img class="img-fluid mr-3" src="assets/Circle Ring.png">
+          <p class="">Submit your attachments <br>for EACH position you're<br> interested in.</p>
+        </div>  
+      </div>
+      <div class="col-md-5 m-auto d-flex flex-column">
+        <div class="z-index:">
+          <img class="col-9 pb-4 position-relative"
+          src="assets/Circle And X Pattern.png">
+        </div>
+        <form class="border-form bg-light">
+          <div class="form-row d-flex flex-wrapjustify-content-center">
+            <div>
+              <div class="col-8 form-group">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col-8 form-group">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
             </div>
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem">
-              <input type="text" class="form-control p-4" name="name" placeholder="Last Name*" required />
+            <div>
+              <div class="col-8 form-group">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col-8 form-group">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
             </div>
-          </div>
-          <div class="d-flex flex-wrap justify-content-center row">
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
-              <input type="text" class="form-control p-4" name="name" placeholder="Position Title*"  required/>
-            </div>
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem">
-              <input type="email" class="form-control p-4" name="name" placeholder="Email*"  required/>
-            </div>
-          </div>
-          <div class="d-flex flex-wrap justify-content-center row">
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem; margin-right: 1.5rem">
-              <textarea class="form-control" name="message" placeholder="Message" rows="7"></textarea>
-            </div>
-            <div class="form-group" style="width: 40%; margin-bottom: 2rem;">
-              <!-- <input id="file-selector" style="height: 27%; padding: 10px; width: 100%" type="file" multiple class="form-control-file mb-3 custom" />
-              <input id="secondUpload" type="file" style="height: 27%; padding: 10px; width: 100%" class="form-control-file mb-3" /> <span id='val'></span>
-              <span id='button'>Select File</span>
-              <input type="file" style="height: 27%; padding: 10px; width: 100%" class="form-control-file mb-3 custom2" /> -->
-              <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
-              <label for="file-1"><span id="spanlabel-1">Upload Resume*</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 
-                11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 
-                1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></label>
-                <input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
-              <label for="file-2"><span id="spanlabel-2">Upload Cover Letter*</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 
-                11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 
-                1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></label>
+            <div class="d-flex justify-conent-center">
+              <textarea class="form-control col-6" name="message" placeholder="Message" rows="7"></textarea>
+              <div>
+                <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
+                <label for="file-1"><span id="spanlabel-1">Upload Resume*</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 
+                  11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 
+                  1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></label>
+                  <input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
+                <label for="file-2"><span id="spanlabel-2">Upload Cover Letter*</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 
+                  11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 
+                  1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></label>
                 <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
               <label for="file-3"><span id="spanlabel-3">Additional Attachments</span></label>
-  1          </div>
-          </div>
-          <div class="form-group" style="margin-left: 2.6rem;">
-            <button class="py-3 px-4" style="background-color: rgb(221, 29, 27); 
-            color: white; border: none;" type="submit"><span>Submit</span></button>
+              </div>
+            </div>
           </div>
         </form>
+      </div>
+      <div class="col-md-2 align-items-start">
+        <img class="img-fluid position-relative" style="right: 1rem; top: 1rem;"
+        src="assets/Elipse Pattern.png">
       </div>
     </div>
   </section>
