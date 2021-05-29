@@ -11,13 +11,13 @@ const main = document.getElementById('main');
 
 const form = document.forms[0];
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const formData = new FormData(this);
-  const entries = formData.entries();
-  const data = Object.fromEntries(entries);
-  sendFormData()
-}); 
+// form.addEventListener("submit", function(event) {
+//   event.preventDefault();
+//   const formData = new FormData(this);
+//   const entries = formData.entries();
+//   const data = Object.fromEntries(entries);
+//   sendFormData()
+// }); 
 
 const sendFormData = () => {
   // Email.send({

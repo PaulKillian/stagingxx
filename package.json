@@ -6,6 +6,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "emailjs-com": "^2.6.4",
     "nodemailer": "^6.6.1"
   }
 }
