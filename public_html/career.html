@@ -9,10 +9,11 @@
   <title>XX Artists</title>
   <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
   <link href="apple-touch-icon.png" rel="apple-touch-icon" />
-  <script src="js/smart-forms.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script src="https://smtpjs.com/v3/smtp.js">
 </script>
 <script type="text/javascript">
 	(function() {
@@ -80,7 +81,7 @@
           <img class="col-9 pb-4 position-relative" style="margin-left: 64px"
           src="assets/Circle And X Pattern.png">
         </div>
-        <form id="myForm" enctype="multipart/form-data" method="post" action="http://127.0.0.1:3000/send" class="border-form bg-light py-5" style="height: 63.3vh; margin-left: 80px; width: 100%;">
+        <form id="myForm" enctype="multipart/form-data" method="post" class="border-form bg-light py-5" style="height: 63.3vh; margin-left: 80px; width: 100%;">
           <div class="d-flex flex-wrap justify-content-center form-group col-12">
             <input type="text" class="input-design col-5 m-2" placeholder="First name">
             <input type="text" class="input-design col-5 m-2" placeholder="Last name">

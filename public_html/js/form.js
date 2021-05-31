@@ -1,36 +1,50 @@
-function handleFileSelect(evt) {
-  const fileList = evt.target.files;
-  console.log(fileList[0].name);
-  const custom = document.querySelector('.custom')
-  custom.classList.remove('custom')
-  custom.classList.add('custom-success')
+// function handleFileSelect(evt) {
+//   const fileList = evt.target.files;
+//   console.log(fileList[0].name);
+//   const custom = document.querySelector('.custom')
+//   custom.classList.remove('custom')
+//   custom.classList.add('custom-success')
   
-}
-document.getElementById('file-selector').addEventListener('change', handleFileSelect, false);
+// }
+// document.getElementById('file-selector').addEventListener('change', handleFileSelect, false);
 const main = document.getElementById('main');
 
 const form = document.forms[0];
 
-// form.addEventListener("submit", function(event) {
-//   event.preventDefault();
-//   const formData = new FormData(this);
-//   const entries = formData.entries();
-//   const data = Object.fromEntries(entries);
-//   sendFormData()
-// }); 
+form.addEventListener("submit", function(event) {
+  const fileList = event.target.files;
+  console.log(fileList);
+  event.preventDefault();
+  const formData = new FormData(this);
+  const entries = formData.entries();
+  const data = Object.fromEntries(entries);
+  sendFormData(formData)
+}); 
 
-const sendFormData = () => {
-  // Email.send({
-  //   Host : "smtp.gmail.com",
-  //   Username : "psk65lava@gmail.com",
-  //   Password : "Sammy6565656565",
-  //   To : 'psk65lava@gmail.com',
-  //   From : "psk65lava@gmail.com",
-  //   Subject : "This is the subject",
-  //   Body : "And this is the body"
-  // }).then(
-  // message => alert(message)
-  // );
+const sendFormData = (event, formData) => {
+  var file = event.srcElement.files[0];
+  var reader = new FileReader();
+  reader.readAsBinaryString(file);
+  reader.onload = function () {
+  var dataUri = "data:" + file.type + ";base64," + btoa(reader.result)
+
+  Email.send({
+    // 15120ee8-744a-47e2-8e79-fabd94e33db4
+    Host : "aspmx.l.google.com",
+    Username : "psk65lava@gmail.com",
+    Password : "Sammy6565656565",
+    To : 'psk65lava@gmail.com',
+    From : "psk65lava@gmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body",
+    Attachments : [
+      {
+        name : file.name,
+        data : dataUri
+      }]
+  }).then(
+  message => alert(message)
+  );
   loader();
 }
 
