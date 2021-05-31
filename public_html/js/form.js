@@ -61,6 +61,15 @@ const loader = () => {
 }
 
 function fileNameReplace(event){
+//   $(document).on("change", ".inputfile[type=file]", function () {
+//     var file = this.files[0];
+//     if (file.size > 5000) {
+//         alert("Too large Image. Only image smaller than 2MB can be uploaded.");
+//         $(this).replaceWith('<input type="file" name="my_file" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />');
+//         return false;
+//     }
+// });
+  console.log(event.target.files)
   const name = document.getElementById(event.target.id); 
   const fileName = name.files.item(0).name;
   const label	 = name.nextSibling;
