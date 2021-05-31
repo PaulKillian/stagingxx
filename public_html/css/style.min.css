@@ -37,15 +37,35 @@
     display: inline-block;
 	padding: 5px;
 	width: 100%;
+	margin-bottom: 22px;
 }
 
 .inputfile + label {
 	cursor: pointer; /* "hand" cursor */
 }
 
-.elipse {
-	right: 43rem;
-    top: 4rem;
+@media only screen and (max-width: 767px){
+	.elipse {
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 769px){
+	.elipse {
+		right: 25rem;
+		top: 2.5rem;
+		height: 67vh;
+		width: none;
+	}
+}
+
+@media only screen and (width: 768px) {
+	.elipse {
+		right: 40rem;
+		top: 2.5rem;
+		height: 74vh;
+		width: none;
+	}
 }
 
 
