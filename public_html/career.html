@@ -81,7 +81,8 @@
           <img class="col-9 pb-4 position-relative" style="margin-left: 64px"
           src="assets/Circle And X Pattern.png">
         </div>
-        <form id="myForm" enctype="multipart/form-data" method="post" class="border-form bg-light py-5" style="height: 63.3vh; margin-left: 80px; width: 100%;">
+        <form id="myForm" enctype="multipart/form-data" method="post"  
+        class="border-form bg-light py-5" style="height: 63.3vh; margin-left: 80px; width: 100%;">
           <div class="d-flex flex-wrap justify-content-center form-group col-12">
             <input type="text" class="input-design col-5 m-2" placeholder="First name">
             <input type="text" class="input-design col-5 m-2" placeholder="Last name">
@@ -91,7 +92,7 @@
           <div class="d-flex flex-wrap justify-content-center form-group col-12">
             <textarea class="textarea-design input-design col-5 mr-3" name="message" rows="7" placeholder="Message"></textarea>
             <div class="col-5">
-              <input type="file" name="my_file" size="1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
+              <input type="file" accept=”.pdf” name="my_file" size="1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)"/>
               <label for="file-1"><span id="spanlabel-1" class="pl-2 pr-5">Upload Resume*</span>
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="2vw" height="2vh"
@@ -99,13 +100,13 @@
                 style=" fill:#000000;"><g transform=""><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,2.0425l-2.4725,2.365l-27.52,27.52c-1.37062,1.37063 -1.37062,3.57438 0,4.945c1.37063,1.37063 3.57438,1.37063 4.945,0l21.6075,-21.6075v94.815c-0.01344,1.23625 0.63156,2.39188 1.70656,3.02344c1.075,0.61813 2.39187,0.61813 3.46687,0c1.075,-0.63156 1.72,-1.78719 1.70656,-3.02344v-94.815l21.6075,21.6075c1.37063,1.37063 3.57438,1.37063 4.945,0c1.37063,-1.37062 1.37063,-3.57437 0,-4.945l-27.52,-27.52zM24.08,55.04v116.96h123.84v-116.96h-34.4c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h27.52v103.2h-110.08v-103.2h27.52c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656z"></path></g><path d="" fill="none"></path></g></g>
                 </svg>
               </label>
-              <input type="file" name="my_file" id="file-2" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
+              <input type="file" accept=”.pdf” name="my_file" id="file-2" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)"/>
               <label for="file-2"><span id="spanlabel-2" class="pl-2 pr-4">Upload Cover Letter*</span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="25" height="25"
                 viewBox="0 0 172 172"
                 style=" fill:#000000;"><g transform=""><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,2.0425l-2.4725,2.365l-27.52,27.52c-1.37062,1.37063 -1.37062,3.57438 0,4.945c1.37063,1.37063 3.57438,1.37063 4.945,0l21.6075,-21.6075v94.815c-0.01344,1.23625 0.63156,2.39188 1.70656,3.02344c1.075,0.61813 2.39187,0.61813 3.46687,0c1.075,-0.63156 1.72,-1.78719 1.70656,-3.02344v-94.815l21.6075,21.6075c1.37063,1.37063 3.57438,1.37063 4.945,0c1.37063,-1.37062 1.37063,-3.57437 0,-4.945l-27.52,-27.52zM24.08,55.04v116.96h123.84v-116.96h-34.4c-1.23625,-0.01344 -2.39187,0.63156 -3.02344,1.70656c-0.61813,1.075 -0.61813,2.39187 0,3.46687c0.63156,1.075 1.78719,1.72 3.02344,1.70656h27.52v103.2h-110.08v-103.2h27.52c1.23625,0.01344 2.39188,-0.63156 3.02344,-1.70656c0.61813,-1.075 0.61813,-2.39187 0,-3.46687c-0.63156,-1.075 -1.78719,-1.72 -3.02344,-1.70656z"></path></g><path d="" fill="none"></path></g></g></svg>
               </label>
-              <input type="file" name="file-3[]" id="file-3" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
+              <input type="file" accept=”.pdf” name="file-3[]" id="file-3" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" onchange="fileNameReplace(event)" />
               <label for="file-3"><span id="spanlabel-3" class="pl-2 pr-2">Additional Attachments</span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
               width="25" height="25"
               viewBox="0 0 172 172"
@@ -113,7 +114,7 @@
               </label>
             </div>
           </div>
-          <input type="submit" value="Send">
+          <button id="send" type="submit" onClick="submitForm()">HI</button>
         </form>
       </div>
       <div class="col-md-2 d-flex align-items-end">
@@ -130,7 +131,22 @@
       <li><a href="https://www.instagram.com/xxartists/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
     </ul>
   </footer>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-storage.js"></script>
+  <script>
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyBTEp-T6iA9c3-d1GkwJuxaoPSQ99PBd_w",
+      authDomain: "xx-artists.firebaseapp.com",
+      projectId: "xx-artists",
+      storageBucket: "xx-artists.appspot.com",
+      messagingSenderId: "189351326698",
+      appId: "1:189351326698:web:884354a32085d300bfb893"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    var storage = firebase.storage();
+    </script>
   <script src="js/form.js"></script>
-  <script src="js/script.min.js"></script>
 </body>
 </html>

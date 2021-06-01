@@ -1,57 +1,63 @@
-// function handleFileSelect(evt) {
-//   const fileList = evt.target.files;
-//   console.log(fileList[0].name);
-//   const custom = document.querySelector('.custom')
-//   custom.classList.remove('custom')
-//   custom.classList.add('custom-success')
-  
-// }
-// document.getElementById('file-selector').addEventListener('change', handleFileSelect, false);
+function handleFileSelect(evt) {
+  const fileList = evt.target.files;
+  console.log(fileList[0].name);
+  const custom = document.querySelector('.custom')
+  custom.classList.remove('custom')
+  custom.classList.add('custom-success')
+}
+
 const main = document.getElementById('main');
 
 const form = document.forms[0];
 
-form.addEventListener("submit", function(event) {
-  const fileList = event.target.files;
-  console.log(fileList);
-  event.preventDefault();
-  const formData = new FormData(this);
-  const entries = formData.entries();
-  const data = Object.fromEntries(entries);
-  sendFormData(formData)
-}); 
+// form.addEventListener("submit", function(event) {
+  // const url = storageRef.getDownloadURL()ß
+  // event.preventDefault();
+  // const formData = new FormData(this);
+  // const entries = formData.entries();
+  // const data = Object.fromEntries(entries)
+  
+  // sendFormData()
+  // Email.send({
+  //   Host : "aspmx.l.google.com",
+  //   Username : "psk65lava@gmail.com",
+  //   Password : "Sammy6565656565",
+  //   To : 'psk65lava@gmail.com',
+  //   From : "psk65lava@gmail.com",
+  //   Subject : "This is the subject",
+  //   Body : "And this is the body",
+  //   Attachments: [{
+  //     name: "1622472894384.pdf",
+  //     path: "https://firebasestorage.googleapis.com/v0/b/xx-artists.appspot.com/o/1622472894384?alt=media&token=d2df0c9f-924a-4b83-b763-4cbc2d47f79a"
+  //     }]
+  // }).then(
+  // message => alert(message)
+  // );
+// }); 
 
-const sendFormData = (event, formData) => {
-  var file = event.srcElement.files[0];
-  var reader = new FileReader();
-  reader.readAsBinaryString(file);
-  reader.onload = function () {
-  var dataUri = "data:" + file.type + ";base64," + btoa(reader.result)
+// const sendFormData = () => {
+//   Email.send({
+//     Host : "aspmx.l.google.com",
+//     Username : "psk65lava@gmail.com",
+//     Password : "Sammy6565656565",
+//     To : 'psk65lava@gmail.com',
+//     From : "psk65lava@gmail.com",
+//     Subject : "This is the subject",
+//     Body : "And this is the body",
+//     Attachments: [{
+//       name: "1622472894384",
+//       path: "gs://xx-artists.appspot.com/1622472894384"
+//       }]
+//   }).then(
+//   message => alert(message)
+//   );
 
-  Email.send({
-    // 15120ee8-744a-47e2-8e79-fabd94e33db4
-    Host : "aspmx.l.google.com",
-    Username : "psk65lava@gmail.com",
-    Password : "Sammy6565656565",
-    To : 'psk65lava@gmail.com',
-    From : "psk65lava@gmail.com",
-    Subject : "This is the subject",
-    Body : "And this is the body",
-    Attachments : [
-      {
-        name : file.name,
-        data : dataUri
-      }]
-  }).then(
-  message => alert(message)
-  );
-  loader();
-}
+// }
 
 const clearAndSubmission = () => {
   setTimeout(function() {
   main.innerHTML = `
-  <div style="height: 50vh;" class="d-flex flex-column align-items-start">
+  <div class="m-auto">
     <div class="d-flex flex-wrap">
     <h1 class="sub-size">SUBMISSION</h1>
     <h1 class="sub-size color: rgb(221, 29, 27);">CONFIRMED!</h1>
@@ -61,17 +67,47 @@ const clearAndSubmission = () => {
     </p>
   </div>`
   clearTimeout(loaderTime)
-  }, 3000);
+  }, 1);
 }
 
-const loader = () => {
+const submitForm = () => {
+  const file_data = $('#file-1').prop('files')[0];
+  var storage = firebase.storage();
+  // const resumesRef = storageRef.child(`resumes/${file_data.name}`);
+  var pathReference = storage.ref();
+  pathReference.child(`resumes/${file_data.name}`).getDownloadURL()
+  .then((url) => {
+    console.log(url)
+    Email.send({
+        Host : "aspmx.l.google.com",
+        Username : "psk65lava@gmail.com",
+        Password : "Sammy6565656565",
+        To : 'psk65lava@gmail.com',
+        From : "psk65lava@gmail.com",
+        Subject : "This is the subject",
+        Body : "And this is the body",
+        Attachments: [{
+              name: `${file_data.name}`,
+              path: `${url}`,
+              }]
+      }).then(
+      message => alert(message)
+      );
+  })
+
   main.innerHTML = ""
-  const loaderTime = setTimeout(function() {
+  loaderTime = setTimeout(function() {
   const loader = document.createElement('div');
-  loader.classList.add('loader')
+  loader.classList.add('loader', 'm-auto')
   main.appendChild(loader)
   clearAndSubmission();
-  }, 500);
+  }, 1);
+}
+
+const endButton = () => {
+  setTimeout(function() {
+  clearTimeout(stopButton)
+  }, 200);
 }
 
 function fileNameReplace(event){
@@ -83,7 +119,18 @@ function fileNameReplace(event){
 //         return false;
 //     }
 // });
-  console.log(event.target.files)
+  const file_data = $('#file-1').prop('files')[0];
+  const storageRef = firebase.storage().ref();
+  const resumesRef = storageRef.child(`resumes/${file_data.name}`);
+  resumesRef.put(file_data);
+
+ 
+  stopButton = setTimeout(function() {
+    const sendButton = document.getElementById('send');
+    sendButton.classList.add('loader')
+    endButton();
+    }, 1);
+
   const name = document.getElementById(event.target.id); 
   const fileName = name.files.item(0).name;
   const label	 = name.nextSibling;
