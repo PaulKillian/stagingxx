@@ -104,10 +104,12 @@ const submitForm = () => {
   }, 1);
 }
 
-const endButton = () => {
+const endUpload = (label, file) => {
   setTimeout(function() {
-  clearTimeout(stopButton)
-  }, 200);
+    // element.classList.remove('loader')
+    clearTimeout(uploading)
+    label.innerText = file
+  }, 2000);
 }
 
 function fileNameReplace(event){
@@ -125,16 +127,18 @@ function fileNameReplace(event){
   resumesRef.put(file_data);
 
  
-  stopButton = setTimeout(function() {
-    const sendButton = document.getElementById('send');
-    sendButton.classList.add('loader')
-    endButton();
-    }, 1);
-
-  const name = document.getElementById(event.target.id); 
+  
+  const id = event.target.id
+  const name = document.getElementById(id); 
   const fileName = name.files.item(0).name;
   const label	 = name.nextSibling;
   const newLabel = label.nextSibling.childNodes[0].id
   const spanLabel = document.getElementById(newLabel)
-  spanLabel.innerText = fileName
+  uploading = setTimeout(function() {
+    // const uploadEl = document.getElementById(id);
+    // uploadEl.classList.add('loader')
+    // uploadEl.innerText="uploading"
+    spanLabel.innerText = "uploading..."
+    endUpload(spanLabel, fileName);
+    }, 500);
 }
