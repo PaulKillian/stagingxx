@@ -80,8 +80,6 @@ const submitForm = () => {
     console.log(url)
     Email.send({
         Host : "aspmx.l.google.com",
-        Username : "psk65lava@gmail.com",
-        Password : "Sammy6565656565",
         To : 'psk65lava@gmail.com',
         From : "psk65lava@gmail.com",
         Subject : "This is the subject",
