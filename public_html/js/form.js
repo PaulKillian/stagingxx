@@ -27,27 +27,62 @@ const clearAndSubmission = () => {
 }
 
 const submitForm = () => {
-  const file_data = $('#file-1').prop('files')[0];
+  const file_data1 = $('#file-1').prop('files')[0];
+  const file_data2 = $('#file-2').prop('files')[0];
+  const file_data3 = $('#file-3').prop('files')[0];
+  const fileName1 = file_data1.name
+  const fileName2 = file_data2.name
+  const fileName3 = file_data3.name
+  const allFiles = [fileName1, fileName2, fileName3]
+  let downloadURLS = []
   var storage = firebase.storage();
-  // const resumesRef = storageRef.child(`resumes/${file_data.name}`);
   var pathReference = storage.ref();
-  pathReference.child(`resumes/${file_data.name}`).getDownloadURL()
-  .then((url) => {
-    console.log(url)
-    Email.send({
-        Host : "aspmx.l.google.com",
-        To : 'psk65lava@gmail.com',
-        From : "psk65lava@gmail.com",
-        Subject : "This is the subject",
-        Body : "And this is the body",
-        Attachments: [{
-              name: `${file_data.name}`,
-              path: `${url}`,
-              }]
-      }).then(
-      message => alert(message)
-      );
+  
+    pathReference.child(`resumes/${file_data1.name}`).getDownloadURL()
+    .then((url) => {
+      console.log(url)
+      downloadURLS.push(url)
   })
+    pathReference.child(`resumes/${file_data2.name}`).getDownloadURL()
+    .then((url) => {
+      console.log(url)
+      downloadURLS.push(url)
+  })
+    pathReference.child(`resumes/${file_data3.name}`).getDownloadURL()
+    .then((url) => {
+      console.log(url)
+      downloadURLS.push(url)
+      sendEmail(downloadURLS, allFiles)
+  })
+
+  const sendEmail = (attachments, allFiles) => {
+    Email.send({
+      Host : "aspmx.l.google.com",
+      Username : "psk65lava@gmail.com",
+      Password : "Sammy6565656565",
+      To : 'psk65lava@gmail.com',
+      From : "psk65lava@gmail.com",
+      Subject : "This is the subject",
+      Body : "And this is the body",
+      Attachments: 
+          [
+            {
+              name: `${allFiles[0]}`,
+              path: `${attachments[0]}`,
+            },
+            {
+              name: `${allFiles[1]}`,
+              path: `${attachments[1]}`,
+            },
+            {
+              name: `${allFiles[2]}`,
+              path: `${attachments[2]}`,
+            }
+          ]
+    }).then(
+    message => alert(message)
+    );
+  }
 
   main.innerHTML = ""
   loaderTime = setTimeout(function() {
@@ -67,7 +102,7 @@ const endUpload = (label, file) => {
 }
 
 function fileNameReplace(event){
-  const file_data = $('#file-1').prop('files')[0];
+  const file_data = event.target.files[0]
   const storageRef = firebase.storage().ref();
   const resumesRef = storageRef.child(`resumes/${file_data.name}`);
   resumesRef.put(file_data);
