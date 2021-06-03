@@ -26,72 +26,79 @@ const clearAndSubmission = () => {
   }, 1);
 }
 
-const submitForm = () => {
-  const file_data1 = $('#file-1').prop('files')[0];
-  const file_data2 = $('#file-2').prop('files')[0];
-  const file_data3 = $('#file-3').prop('files')[0];
-  const fileName1 = file_data1.name
-  const fileName2 = file_data2.name
-  const fileName3 = file_data3.name
-  const allFiles = [fileName1, fileName2, fileName3]
-  let downloadURLS = []
+var files = [];
+
+const submitForm = (event) => {
+  const fileName1 = Object.create({});
+  const fileName2 = Object.create({});
+  const fileName3 = Object.create({});
+  const file1 = $('#file-1').prop('files')[0];
+  const file2 = $('#file-2').prop('files')[0];
+  fileName1.name = file1.name
+  fileName2.name = file2.name;
+  const file3Length = document.getElementById('file-3').files.length
+  const file3 = $('#file-2').prop('files')[0];
+  if(file3Length !== 0) { 
+    fileName3.name = file3.name; 
+  }
+  let path1 = '';
+
   var storage = firebase.storage();
   var pathReference = storage.ref();
   
-    pathReference.child(`resumes/${file_data1.name}`).getDownloadURL()
+    pathReference.child(`resumes/${file1.name}`).getDownloadURL()
     .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
+      console.log("hi", files)
+      const name = Object.assign(fileName1);
+      console.log(name)
+      name.path = url
+      files.push(fileName1)
   })
-    pathReference.child(`resumes/${file_data2.name}`).getDownloadURL()
+    pathReference.child(`resumes/${file2.name}`).getDownloadURL()
     .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
+      const name2 = Object.assign(fileName2);
+      console.log(name2)
+      name2.path = url
+      files.push(fileName2)
   })
-    pathReference.child(`resumes/${file_data3.name}`).getDownloadURL()
+  if(file3Length === 0) {
+    sendEmail(files)
+  } else {
+    pathReference.child(`resumes/${file3.name}`).getDownloadURL()
     .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
-      sendEmail(downloadURLS, allFiles)
-  })
-
-  const sendEmail = (attachments, allFiles) => {
-    Email.send({
-      Host : "aspmx.l.google.com",
-      Username : "psk65lava@gmail.com",
-      Password : "Sammy6565656565",
-      To : 'psk65lava@gmail.com',
-      From : "psk65lava@gmail.com",
-      Subject : "This is the subject",
-      Body : "And this is the body",
-      Attachments: 
-          [
-            {
-              name: `${allFiles[0]}`,
-              path: `${attachments[0]}`,
-            },
-            {
-              name: `${allFiles[1]}`,
-              path: `${attachments[1]}`,
-            },
-            {
-              name: `${allFiles[2]}`,
-              path: `${attachments[2]}`,
-            }
-          ]
-    }).then(
-    message => alert(message)
-    );
+      const name3 = Object.assign(fileName1);
+      console.log(name3)
+      name3.path = url
+      files.push(fileName1)
+      sendEmail(files)
+    })
   }
-
-  main.innerHTML = ""
-  loaderTime = setTimeout(function() {
-  const loader = document.createElement('div');
-  loader.classList.add('loader', 'm-auto')
-  main.appendChild(loader)
-  clearAndSubmission();
-  }, 1);
 }
+
+const sendEmail = (emailFiles) => {
+  console.log(emailFiles)
+  Email.send({
+    Host : "aspmx.l.google.com",
+    Username : "psk65lava@gmail.com",
+    Password : "Sammy6565656565",
+    To : 'psk65lava@gmail.com',
+    From : "psk65lava@gmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body",
+    Attachments: emailFiles
+  })
+  loader()
+}
+
+const loader = () => {
+  main.innerHTML = ""
+    loaderTime = setTimeout(function() {
+    const loader = document.createElement('div');
+    loader.classList.add('loader', 'm-auto')
+    main.appendChild(loader)
+    clearAndSubmission();
+    }, 1);
+  }
 
 const endUpload = (label, file) => {
   setTimeout(function() {
@@ -101,7 +108,7 @@ const endUpload = (label, file) => {
   }, 2000);
 }
 
-function fileNameReplace(event){
+const fileNameReplace = (event) => {
   const file_data = event.target.files[0]
   const storageRef = firebase.storage().ref();
   const resumesRef = storageRef.child(`resumes/${file_data.name}`);
