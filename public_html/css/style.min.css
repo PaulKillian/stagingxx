@@ -52,6 +52,10 @@
 	cursor: pointer; /* "hand" cursor */
 }
 
+.background {
+	background-color: rgba(50, 47, 51, 0.9)
+}
+
 @media only screen and (min-width: 375px){
 	.joinxx {
 		width: 99%;
@@ -150,6 +154,11 @@
 	}
 	.border-form {
 		padding: 1rem;
+	}
+	.custom-col {
+		flex: 1 0 45.66667%;
+		max-width: 45.66667%;
+		margin: .5rem;
 	}
 }
 
