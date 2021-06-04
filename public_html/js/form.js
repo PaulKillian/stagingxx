@@ -26,36 +26,40 @@ const clearAndSubmission = () => {
   }, 1);
 }
 
-const submitForm = () => {
-  const file_data1 = $('#file-1').prop('files')[0];
-  const file_data2 = $('#file-2').prop('files')[0];
-  const file_data3 = $('#file-3').prop('files')[0];
-  const fileName1 = file_data1.name
-  const fileName2 = file_data2.name
-  const fileName3 = file_data3.name
-  const allFiles = [fileName1, fileName2, fileName3]
-  let downloadURLS = []
+var files = [];
+
+const submitForm = (event) => {
+  const file1 = $('#file-1').prop('files')[0];
+  const file2 = $('#file-2').prop('files')[0];
+  const file3 = $('#file-3').prop('files')[0];
+  const file3Length = document.getElementById('file-3').files.length
+  let files = [file1.name, file2.name]
+  if(file3Length !== 0) { 
+    files.push(file3.name)
+  }
+
   var storage = firebase.storage();
   var pathReference = storage.ref();
-  
-    pathReference.child(`resumes/${file_data1.name}`).getDownloadURL()
-    .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
-  })
-    pathReference.child(`resumes/${file_data2.name}`).getDownloadURL()
-    .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
-  })
-    pathReference.child(`resumes/${file_data3.name}`).getDownloadURL()
-    .then((url) => {
-      console.log(url)
-      downloadURLS.push(url)
-      sendEmail(downloadURLS, allFiles)
-  })
+  var promises = [];
+  for (var i = 0; i <= files.length; i++) {
+    if(files[i] === undefined) {
+      continue;
+    } else {
+      promises.push(pathReference.child(`resumes/${files[i]}`).getDownloadURL());
+    }
+  }
 
-  const sendEmail = (attachments, allFiles) => {
+  Promise.all(promises).then((urls) => {
+    const emailParams = []
+    urls.forEach((url, index) => {
+      const emailData = {
+        name: files[index],
+        path: url
+      }
+      emailParams.push(emailData)
+      console.log(emailParams);
+    });
+
     Email.send({
       Host : "aspmx.l.google.com",
       Username : "psk65lava@gmail.com",
@@ -64,34 +68,21 @@ const submitForm = () => {
       From : "psk65lava@gmail.com",
       Subject : "This is the subject",
       Body : "And this is the body",
-      Attachments: 
-          [
-            {
-              name: `${allFiles[0]}`,
-              path: `${attachments[0]}`,
-            },
-            {
-              name: `${allFiles[1]}`,
-              path: `${attachments[1]}`,
-            },
-            {
-              name: `${allFiles[2]}`,
-              path: `${attachments[2]}`,
-            }
-          ]
-    }).then(
-    message => alert(message)
-    );
-  }
-
-  main.innerHTML = ""
-  loaderTime = setTimeout(function() {
-  const loader = document.createElement('div');
-  loader.classList.add('loader', 'm-auto')
-  main.appendChild(loader)
-  clearAndSubmission();
-  }, 1);
+      Attachments: emailParams
+    })
+  });
+  loader()
 }
+
+const loader = () => {
+  main.innerHTML = ""
+    loaderTime = setTimeout(function() {
+    const loader = document.createElement('div');
+    loader.classList.add('loader', 'm-auto')
+    main.appendChild(loader)
+    clearAndSubmission();
+    }, 1);
+  }
 
 const endUpload = (label, file) => {
   setTimeout(function() {
@@ -101,7 +92,7 @@ const endUpload = (label, file) => {
   }, 2000);
 }
 
-function fileNameReplace(event){
+const fileNameReplace = (event) => {
   const file_data = event.target.files[0]
   const storageRef = firebase.storage().ref();
   const resumesRef = storageRef.child(`resumes/${file_data.name}`);
