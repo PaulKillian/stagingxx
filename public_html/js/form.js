@@ -1,34 +1,86 @@
-function handleFileSelect(evt) {
-  const fileList = evt.target.files;
-  console.log(fileList[0].name);
-  const custom = document.querySelector('.custom')
-  custom.classList.remove('custom')
-  custom.classList.add('custom-success')
+const main = document.getElementById('main');
+const form = document.forms[0];
+
+// function handleFileSelect(evt) {
+//   const fileList = evt.target.files;
+//   console.log(fileList[0].name);
+//   const custom = document.querySelector('.custom')
+//   custom.classList.remove('custom')
+//   custom.classList.add('custom-success')
+// }
+
+const endUpload = (label, file) => {
+  setTimeout(function() {
+    clearTimeout(uploading)
+    label.parentElement.classList.add('background')
+    label.innerText = file
+  }, 2000);
 }
 
-const main = document.getElementById('main');
-
-const form = document.forms[0];
+const fileNameReplace = (event) => {
+  const file_data = event.target.files[0]
+  const storageRef = firebase.storage().ref();
+  const resumesRef = storageRef.child(`resumes/${file_data.name}`);
+  resumesRef.put(file_data);
+  
+  const id = event.target.id
+  const name = document.getElementById(id); 
+  const fileName = name.files.item(0).name;
+  const label	 = name.nextSibling;
+  const newLabel = label.nextSibling.childNodes[0].id
+  const spanLabel = document.getElementById(newLabel)
+  uploading = setTimeout(function() {
+    spanLabel.innerText = "uploading..."
+    endUpload(spanLabel, fileName);
+    }, 500);
+}
 
 const clearAndSubmission = () => {
   setTimeout(function() {
   main.innerHTML = `
-  <div class="m-auto">
-    <div class="d-flex flex-wrap">
-    <h1 class="sub-size">SUBMISSION</h1>
-    <h1 class="sub-size color: rgb(221, 29, 27);">CONFIRMED!</h1>
-    </div>
-    <p>Thank you for reaching out! A team member will be in<br>contact with you shortly. In the meantime,
-    please take<br>a look at our site at<span style="color: rgb(221, 29, 27);"> xxartist.com</span>
-    </p>
-  </div>`
+    <div class="row">
+      <div class="col-sm-12 col-md-11">
+        <img class="submit-elipse"
+        src="assets/Elipse Pattern.png">
+      </div>
+        <div class="col-sm-11 col-lg-5">
+          <div>
+            <img class="sbmit-x-pattern" src="assets/Circle And X Pattern.png">
+            <img class="submit" src="assets/Submission_Confirmed.png">
+          </div>
+          <div>
+            <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
+            contact with you shortly. In the meaning time, please take<br>a look at 
+            look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
+            xxartists.com</span></a></p>
+            <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
+          </div>  
+        </div>
+      </div>
+      <div class="d-flex col-md-12 position-solid-circle justify-content-end">
+        <img class="submit-solid-circle" src="assets/Circles and Ring.png">
+      </div>
+    </div>`
   clearTimeout(loaderTime)
-  }, 1);
+  }, 2000);
 }
 
-var files = [];
+const loader = () => {
+  main.innerHTML = ""
+    loaderTime = setTimeout(function() {
+    const loader = document.createElement('div');
+    loader.classList.add('loader', 'm-auto')
+    main.appendChild(loader)
+    clearAndSubmission();
+    }, 1);
+  }
 
-const submitForm = (event) => {
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const formData = new FormData(this);
+  const entries = formData.entries();
+  const data = Object.fromEntries(entries);
+
   const file1 = $('#file-1').prop('files')[0];
   const file2 = $('#file-2').prop('files')[0];
   const file3 = $('#file-3').prop('files')[0];
@@ -57,55 +109,23 @@ const submitForm = (event) => {
         path: url
       }
       emailParams.push(emailData)
-      console.log(emailParams);
     });
 
     Email.send({
-      Host : "aspmx.l.google.com",
-      Username : "psk65lava@gmail.com",
-      Password : "Sammy6565656565",
+      Host : 'aspmx.l.google.com',
+      Username : 'psk65lava@gmail.com',
+      Password : 'Sammy6565656565',
       To : 'psk65lava@gmail.com',
-      From : "psk65lava@gmail.com",
-      Subject : "This is the subject",
-      Body : "And this is the body",
+      From : data.email,
+      Subject : 'Resume from website',
+      Name: data.firstName,
+      Body : `<html><h1>${data.firstName} ${data.lastName}</h1>
+                <h2>${data.position}</h2>
+                <h3>${data.email}</h3>
+                <p>${data.message}</p>
+              </html>`,
       Attachments: emailParams
     })
   });
   loader()
-}
-
-const loader = () => {
-  main.innerHTML = ""
-    loaderTime = setTimeout(function() {
-    const loader = document.createElement('div');
-    loader.classList.add('loader', 'm-auto')
-    main.appendChild(loader)
-    clearAndSubmission();
-    }, 1);
-  }
-
-const endUpload = (label, file) => {
-  setTimeout(function() {
-    clearTimeout(uploading)
-    label.parentElement.classList.add('background')
-    label.innerText = file
-  }, 2000);
-}
-
-const fileNameReplace = (event) => {
-  const file_data = event.target.files[0]
-  const storageRef = firebase.storage().ref();
-  const resumesRef = storageRef.child(`resumes/${file_data.name}`);
-  resumesRef.put(file_data);
-  
-  const id = event.target.id
-  const name = document.getElementById(id); 
-  const fileName = name.files.item(0).name;
-  const label	 = name.nextSibling;
-  const newLabel = label.nextSibling.childNodes[0].id
-  const spanLabel = document.getElementById(newLabel)
-  uploading = setTimeout(function() {
-    spanLabel.innerText = "uploading..."
-    endUpload(spanLabel, fileName);
-    }, 500);
-}
+})
