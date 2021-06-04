@@ -29,64 +29,48 @@ const clearAndSubmission = () => {
 var files = [];
 
 const submitForm = (event) => {
-  const fileName1 = Object.create({});
-  const fileName2 = Object.create({});
-  const fileName3 = Object.create({});
   const file1 = $('#file-1').prop('files')[0];
   const file2 = $('#file-2').prop('files')[0];
-  fileName1.name = file1.name
-  fileName2.name = file2.name;
+  const file3 = $('#file-3').prop('files')[0];
   const file3Length = document.getElementById('file-3').files.length
-  const file3 = $('#file-2').prop('files')[0];
+  let files = [file1.name, file2.name]
   if(file3Length !== 0) { 
-    fileName3.name = file3.name; 
+    files.push(file3.name)
   }
-  let path1 = '';
 
   var storage = firebase.storage();
   var pathReference = storage.ref();
-  
-    pathReference.child(`resumes/${file1.name}`).getDownloadURL()
-    .then((url) => {
-      console.log("hi", files)
-      const name = Object.assign(fileName1);
-      console.log(name)
-      name.path = url
-      files.push(fileName1)
-  })
-    pathReference.child(`resumes/${file2.name}`).getDownloadURL()
-    .then((url) => {
-      const name2 = Object.assign(fileName2);
-      console.log(name2)
-      name2.path = url
-      files.push(fileName2)
-  })
-  if(file3Length === 0) {
-    sendEmail(files)
-  } else {
-    pathReference.child(`resumes/${file3.name}`).getDownloadURL()
-    .then((url) => {
-      const name3 = Object.assign(fileName1);
-      console.log(name3)
-      name3.path = url
-      files.push(fileName1)
-      sendEmail(files)
-    })
+  var promises = [];
+  for (var i = 0; i <= files.length; i++) {
+    if(files[i] === undefined) {
+      continue;
+    } else {
+      promises.push(pathReference.child(`resumes/${files[i]}`).getDownloadURL());
+    }
   }
-}
 
-const sendEmail = (emailFiles) => {
-  console.log(emailFiles)
-  Email.send({
-    Host : "aspmx.l.google.com",
-    Username : "psk65lava@gmail.com",
-    Password : "Sammy6565656565",
-    To : 'psk65lava@gmail.com',
-    From : "psk65lava@gmail.com",
-    Subject : "This is the subject",
-    Body : "And this is the body",
-    Attachments: emailFiles
-  })
+  Promise.all(promises).then((urls) => {
+    const emailParams = []
+    urls.forEach((url, index) => {
+      const emailData = {
+        name: files[index],
+        path: url
+      }
+      emailParams.push(emailData)
+      console.log(emailParams);
+    });
+
+    Email.send({
+      Host : "aspmx.l.google.com",
+      Username : "psk65lava@gmail.com",
+      Password : "Sammy6565656565",
+      To : 'psk65lava@gmail.com',
+      From : "psk65lava@gmail.com",
+      Subject : "This is the subject",
+      Body : "And this is the body",
+      Attachments: emailParams
+    })
+  });
   loader()
 }
 
