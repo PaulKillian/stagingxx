@@ -9,11 +9,13 @@ const form = document.forms[0];
 //   custom.classList.add('custom-success')
 // }
 
-const endUpload = (label, file) => {
+const endUpload = (label, file, element) => {
   setTimeout(function() {
     clearTimeout(uploading)
     label.parentElement.classList.add('background')
     label.innerText = file
+    element.classList.add('inputfile-color-change')
+    element.classList.remove('inputfile')
   }, 2000);
 }
 
@@ -31,47 +33,77 @@ const fileNameReplace = (event) => {
   const spanLabel = document.getElementById(newLabel)
   uploading = setTimeout(function() {
     spanLabel.innerText = "uploading..."
-    endUpload(spanLabel, fileName);
+    endUpload(spanLabel, fileName, name);
     }, 500);
 }
 
-const clearAndSubmission = () => {
-  setTimeout(function() {
-  main.innerHTML = `
-    <div class="row">
-      <div class="col-sm-12 col-md-11">
-        <img class="submit-elipse"
-        src="assets/Elipse Pattern.png">
-      </div>
-        <div class="col-sm-11 col-lg-5">
-          <div>
-            <img class="sbmit-x-pattern" src="assets/Circle And X Pattern.png">
-            <img class="submit" src="assets/Submission_Confirmed.png">
+const clearAndSubmission = (response) => {
+  if(response !== 'OK') {
+    setTimeout(function() {
+      main.innerHTML = `
+        <div class="row">
+          <div class="col-sm-12 col-md-11">
+            <img class="submit-elipse"
+            src="assets/Elipse Pattern.png">
           </div>
-          <div>
-            <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
-            contact with you shortly. In the meaning time, please take<br>a look at 
-            look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
-            xxartists.com</span></a></p>
-            <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
-          </div>  
+            <div class="col-sm-11 col-lg-5">
+              <div>
+                <img class="sbmit-x-pattern" src="assets/Circle And X Pattern.png">
+                <h1>Something went wrong</h1>
+              </div>
+              <div>
+                <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
+                contact with you shortly. In the meaning time, please take<br>a look at 
+                look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
+                xxartists.com></span></a></p>
+                <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
+              </div>  
+            </div>
+          </div>
+          <div class="d-flex col-md-12 position-solid-circle justify-content-end">
+            <img class="submit-solid-circle" src="assets/Circles and Ring.png">
+          </div>
+        </div>`
+      clearTimeout(loaderTime)
+      }, 2000);
+    } else {
+    setTimeout(function() {
+    main.innerHTML = `
+      <div class="row">
+        <div class="col-sm-12 col-md-11">
+          <img class="submit-elipse"
+          src="assets/Elipse Pattern.png">
         </div>
-      </div>
-      <div class="d-flex col-md-12 position-solid-circle justify-content-end">
-        <img class="submit-solid-circle" src="assets/Circles and Ring.png">
-      </div>
-    </div>`
-  clearTimeout(loaderTime)
-  }, 2000);
+          <div class="col-sm-11 col-lg-5">
+            <div>
+              <img class="sbmit-x-pattern" src="assets/Circle And X Pattern.png">
+              <img class="submit" src="assets/Submission_Confirmed.png">
+            </div>
+            <div>
+              <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
+              contact with you shortly. In the meaning time, please take<br>a look at 
+              look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
+              xxartists.com></span></a></p>
+              <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
+            </div>  
+          </div>
+        </div>
+        <div class="d-flex col-md-12 position-solid-circle justify-content-end">
+          <img class="submit-solid-circle" src="assets/Circles and Ring.png">
+        </div>
+      </div>`
+    clearTimeout(loaderTime)
+    }, 2000);
+  }
 }
 
-const loader = () => {
+const loader = (smtpResponse) => {
   main.innerHTML = ""
     loaderTime = setTimeout(function() {
     const loader = document.createElement('div');
     loader.classList.add('loader', 'm-auto')
     main.appendChild(loader)
-    clearAndSubmission();
+    clearAndSubmission(smtpResponse);
     }, 1);
   }
 
@@ -117,7 +149,7 @@ form.addEventListener("submit", function(event) {
       Password : 'Sammy6565656565',
       To : 'psk65lava@gmail.com',
       From : data.email,
-      Subject : 'Resume from website',
+      Subject : `Resume submission from site, ${data.firstName} ${data.lastName}` ,
       Name: data.firstName,
       Body : `<html><h1>${data.firstName} ${data.lastName}</h1>
                 <h2>${data.position}</h2>
@@ -125,7 +157,6 @@ form.addEventListener("submit", function(event) {
                 <p>${data.message}</p>
               </html>`,
       Attachments: emailParams
-    })
+    }).then((data) => {loader(data)});
   });
-  loader()
-})
+});
