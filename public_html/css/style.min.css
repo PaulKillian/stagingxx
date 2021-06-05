@@ -135,12 +135,14 @@
 		flex: 1 0 90%;
 		max-width: 90%;
 		margin: .5rem;
-		margin-left: 1rem;
 	}
 	.submit {
 		width: 91%;
 		height: auto;
 		margin-top: 1rem;
+	}
+	label {
+		padding: 10px;
 	}
 }
 
@@ -165,9 +167,6 @@
 	}
 	.joinxx {
 		margin-left: 35px;
-	}
-	.custom-col {
-		margin-left: 2rem;
 	}
 }
 
@@ -218,8 +217,8 @@
 		padding: 1rem;
 	}
 	.custom-col {
-		flex: 1 0 46.66667%;
-		max-width: 46.66667%;
+		flex: 0 0 41.66667%;
+		max-width: 41.66667%;
 		margin: .5rem;
 	}
 }
@@ -261,7 +260,6 @@
 	}
 	.border-form {
 		border-width: 13px;
-		padding: 2rem;
 	}
 	.solid-circle {
 		right: 1.7rem;

@@ -1,14 +1,6 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
 
-// function handleFileSelect(evt) {
-//   const fileList = evt.target.files;
-//   console.log(fileList[0].name);
-//   const custom = document.querySelector('.custom')
-//   custom.classList.remove('custom')
-//   custom.classList.add('custom-success')
-// }
-
 const endUpload = (label, file, element) => {
   setTimeout(function() {
     clearTimeout(uploading)
