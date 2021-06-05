@@ -69,29 +69,33 @@ const clearAndSubmission = (response) => {
     } else {
     setTimeout(function() {
     main.innerHTML = `
-      <div class="row">
-        <div class="col-sm-12 col-md-11">
-          <img class="submit-elipse"
-          src="assets/Elipse Pattern.png">
-        </div>
-          <div class="col-sm-11 col-lg-5">
-            <div>
-              <img class="sbmit-x-pattern" src="assets/Circle And X Pattern.png">
+    <div class="row">
+      <div class="col-sm-12 col-md-11">
+        <img class="submit-elipse"
+        src="assets/Elipse Pattern.png">
+      </div>
+        <div class="col-sm-12 col-lg-12">
+          <div>
+            <div class="row d-flex justify-content-end">
+              <img class="submit-x-pattern" src="assets/Circle And X Pattern.png">
+            </div>
+            <div class="d-flex justify-content-center">
               <img class="submit" src="assets/Submission_Confirmed.png">
             </div>
-            <div>
-              <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
-              contact with you shortly. In the meaning time, please take<br>a look at 
-              look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
-              xxartists.com></span></a></p>
-              <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
-            </div>  
           </div>
+          <div>
+            <p class="col-lg-7 ml-5">Thank you for reaching out! A team member will be in<br>
+            contact with you shortly. In the meaning time, please take<br>a look at 
+            look at our site at <a href="https://xxartists.com"><span 
+              style="color: rgb(221, 29, 27); font-size: 1rem;">xxartists.com</span></a></p>
+            <img class="submit-hollow-circle" src="assets/Circle Ring.png">
+          </div>  
         </div>
-        <div class="d-flex col-md-12 position-solid-circle justify-content-end">
-          <img class="submit-solid-circle" src="assets/Circles and Ring.png">
-        </div>
-      </div>`
+      </div>
+      <div class="d-flex col-md-12 position-solid-circle justify-content-end">
+        <img class="submit-solid-circle" src="assets/Circles and Ring.png">
+      </div>
+    </div>`
     clearTimeout(loaderTime)
     }, 2000);
   }
