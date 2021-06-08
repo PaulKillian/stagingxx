@@ -1,19 +1,12 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
 
-// function handleFileSelect(evt) {
-//   const fileList = evt.target.files;
-//   console.log(fileList[0].name);
-//   const custom = document.querySelector('.custom')
-//   custom.classList.remove('custom')
-//   custom.classList.add('custom-success')
-// }
 
 const endUpload = (label, file, element) => {
   setTimeout(function() {
     clearTimeout(uploading)
     label.parentElement.classList.add('background')
-    label.innerText = file
+    label.innerText = file.slice(0, 20) + "..."
     element.classList.add('inputfile-color-change')
     element.classList.remove('inputfile')
   }, 2000);
@@ -40,29 +33,30 @@ const fileNameReplace = (event) => {
 const clearAndSubmission = () => {
   setTimeout(function() {
   main.innerHTML = `
-    <div class="row">
-      <div class="col-sm-12 col-md-11">
-        <img class="submit-elipse"
-        src="assets/Elipse Pattern.png">
+  <div class="row">
+    <div class="col-sm-12 col-md-11 col-lg-10 d-flex justify-content-end">
+      <img class="submit-x-pattern" src="assets/Circle And X Pattern.png">
+    </div>
+  </div>
+  <div>
+    <div class="col-sm-12 col-lg-12">
+      <div class="d-flex justify-content-center">
+        <img class="submit-elipse col-7"src="assets/Elipse Pattern.png">
+        <img class="submit" src="assets/Submission_Confirmed.png">
       </div>
-        <div class="col-sm-11 col-lg-12">
-          <div>
-            <img class="submit-x-pattern" src="assets/Circle And X Pattern.png">
-            <img class="submit" src="assets/Submission_Confirmed.png">
-          </div>
-          <div>
-            <p class="col-lg-7">Thank you for reaching out! A team member will be in<br>
-            contact with you shortly. In the meaning time, please take<br>a look at 
-            look at our site at <a href="https://xxartists.com"><span style="background-color: rgb(221, 29, 27);"
-            <span>xxartists.com</span></a></p>
-            <img class="sumbit-hollow-circle" src="assets/Circle Ring.png">
-          </div>  
-        </div>
-      </div>
-      <div class="d-flex col-md-12 position-solid-circle justify-content-end">
-        <img class="submit-solid-circle" src="assets/Circles and Ring.png">
-      </div>
-    </div>`
+    </div>
+  </div>
+  <div class="">
+    <div class="col-12 col-md-9 mt-4">
+      <p class="submit-p">Thank you for reaching out! A team member will be in<br>
+      contact with you shortly. In the meaning time, please take<br>
+      a look at our site at <a href="https://xxartists.com"><span class="submit-span" style="color: rgb(221, 29, 27);">xxartists.com</span></a></p>
+      <img class="submit-hollow-circle" src="assets/Circle Ring.png">
+    </div>
+    <div class="col-12 col-md-12 d-flex justify-content-end">
+      <img class="submit-solid-circle" src="assets/Circles and Ring.png">
+    </div>
+  </div>`
   clearTimeout(loaderTime)
   }, 2000);
 }
@@ -70,9 +64,13 @@ const clearAndSubmission = () => {
 const loader = () => {
   main.innerHTML = ""
     loaderTime = setTimeout(function() {
+    const loaderContainer = document.createElement('div');
     const loader = document.createElement('div');
-    loader.classList.add('loader', 'm-auto')
-    main.appendChild(loader)
+    loaderContainer.classList.add('d-flex', 'align-items-center');
+    loaderContainer.style.height="100vh";
+    loader.classList.add('loader', 'm-auto');
+    main.appendChild(loaderContainer);
+    loaderContainer.appendChild(loader);
     clearAndSubmission();
     }, 1);
   }
@@ -92,14 +90,15 @@ form.addEventListener("submit", function(event) {
     files.push(file3.name)
   }
 
-  var storage = firebase.storage();
-  var pathReference = storage.ref();
-  var promises = [];
-  for (var i = 0; i <= files.length; i++) {
+  const storage = firebase.storage();
+  const pathReference = storage.ref();
+  const promises = [];
+  for (let i = 0; i <= files.length; i++) {
     if(files[i] === undefined) {
       continue;
     } else {
       promises.push(pathReference.child(`resumes/${files[i]}`).getDownloadURL());
+      console.log(promises)
     }
   }
 
@@ -129,5 +128,6 @@ form.addEventListener("submit", function(event) {
       Attachments: emailParams
     })
   });
+  
   loader()
 })
