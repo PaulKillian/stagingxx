@@ -1,5 +1,6 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
+require('dotenv/config');
 
 const endUpload = (label, file, element) => {
   setTimeout(function() {
@@ -113,10 +114,8 @@ form.addEventListener("submit", function(event) {
     });
 
     Email.send({
-      Host : host,
-      Username : process.env.USERNAME,
-      Password : process.env.PASSWORD,
-      To : process.env.TO,
+      SecureToken : "a4d1145c-bbaf-471e-a7d6-cd680cc48847",
+      To : "psk65lava@gmail.com",
       From : data.email,
       Subject : `Resume submission from site, ${data.firstName} ${data.lastName}` ,
       Name: data.firstName,
