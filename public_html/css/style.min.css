@@ -207,9 +207,11 @@
 	}
 	.submit-hollow-circle {
 		margin-left: 13rem;
+		height: 32px;
 	}
 	.submit-solid-circle {
 		width: 40%;
+		height: 154px;
 		bottom: 4rem;
 		position: relative;
 	}
@@ -237,6 +239,9 @@
 		/* margin-left: 2.5rem; */
 		position: default;
 		left: 0;
+	}
+	.submit {
+		height: 86px;
 	}
 }
 
