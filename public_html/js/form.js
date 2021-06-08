@@ -12,7 +12,6 @@ const endUpload = (label, file, element) => {
 }
 
 const fileNameReplace = (event) => {
-  console.log(process.env.HOST)
   const file_data = event.target.files[0]
   const storageRef = firebase.storage().ref();
   const resumesRef = storageRef.child(`resumes/${file_data.name}`);
