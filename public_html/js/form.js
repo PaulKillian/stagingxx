@@ -1,13 +1,6 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
 
-// function handleFileSelect(evt) {
-//   const fileList = evt.target.files;
-//   console.log(fileList[0].name);
-//   const custom = document.querySelector('.custom')
-//   custom.classList.remove('custom')
-//   custom.classList.add('custom-success')
-// }
 
 const endUpload = (label, file, element) => {
   setTimeout(function() {
@@ -71,9 +64,13 @@ const clearAndSubmission = () => {
 const loader = () => {
   main.innerHTML = ""
     loaderTime = setTimeout(function() {
+    const loaderContainer = document.createElement('div');
     const loader = document.createElement('div');
-    loader.classList.add('loader', 'm-auto')
-    main.appendChild(loader)
+    loaderContainer.classList.add('d-flex', 'align-items-center');
+    loaderContainer.style.height="100vh";
+    loader.classList.add('loader', 'm-auto');
+    main.appendChild(loaderContainer);
+    loaderContainer.appendChild(loader);
     clearAndSubmission();
     }, 1);
   }

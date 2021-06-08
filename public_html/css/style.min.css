@@ -285,13 +285,16 @@
 	}
 	.submit {
 		width: 72%;
+		margin-top: 3rem;
 	}
 	.submit-p {
 		margin-left: 8.5rem;
 	}
-	.submit-span {
-		font-size: 1rem;
+	.submit-span, p {
+		font-size: 1.1rem;
+		text-decoration: none;
 	}
+	
 }
 
 @media only screen and (min-width: 1200px) {
@@ -302,9 +305,9 @@
 		width: 36rem;
 	}
 	.submit-elipse {
-		width: 38%;
-		left: -31rem;
-    	bottom: -19rem;
+		width: 40%;
+		left: -28rem;
+		bottom: -20rem;
 	}
 	.joinxx {
 		margin-top: 8.7rem;
@@ -317,8 +320,8 @@
 		width: 7%
 	}
 	.submit-hollow-circle {
-		margin: 23px 35px 0px 531px;
-		width: 3%;
+		margin: 23px 35px 0px 500px;
+		width: 4%;
 	}
 	label {
 		padding: 10px;
@@ -335,14 +338,13 @@
 	}
 	.submit-solid-circle {
 		width: 32%;
-		top: -9rem;
+		top: -6rem
 	}
 	.position-solid-circle {
 		bottom: .7rem;
 	}
 	.submit-p {
-		margin-left: 13.5rem;
-		font-size: 1.5rem;
+		margin-left: 12.2rem;
 	}
 }
 
