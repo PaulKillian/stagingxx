@@ -336,6 +336,9 @@
 }
 
 @media only screen and (min-width: 1200px) {
+	.homexx {
+		margin-top: 4px;
+	}
 	.elipse {
 		right: 25rem;
 		top: 9.5rem;
@@ -440,6 +443,24 @@
 	.homexx {
 		margin-right: 91px;
     	margin-top: 5px;
+	}
+	.submit-elipse {
+		width: 72%;
+		left: -55rem;
+		bottom: -32.5rem;
+	}
+	.submit-p {
+		margin-left: 15.3rem;
+	}
+	.submit-hollow-circle {
+		margin-left: 29rem;
+	}
+	.submit-x-pattern {
+		margin-bottom: 10rem;
+	}
+	.submit-solid-circle {
+		width: 30%;
+		top: -5rem;
 	}
 }
 
