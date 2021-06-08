@@ -97,7 +97,6 @@ form.addEventListener("submit", function(event) {
       continue;
     } else {
       promises.push(pathReference.child(`resumes/${files[i]}`).getDownloadURL());
-      console.log(promises)
     }
   }
 
