@@ -1,7 +1,8 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
-const nav = getElementById('main-menu')
+const nav = document.getElementById('main-menu')
 nav.classList.add('hide')
+
 
 const endUpload = (label, file, element) => {
   setTimeout(function() {
