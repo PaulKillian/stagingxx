@@ -374,7 +374,7 @@
 	}
 	#send {
 		margin-bottom: 4rem;
-		margin-left: 2.4rem;
+		margin-left: max(15px, 5%);
 	}
 	.border-form {
 		border-width: 13px;
