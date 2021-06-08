@@ -105,7 +105,7 @@
 	}
 	.x-pattern {
 		width: 90%;
-		height: auto;
+		height: 10vh;
 		margin: 35px 0px 10px 0px
 	}
 	.submit-x-pattern {
@@ -126,7 +126,7 @@
 	.solid-circle {
 		position: relative;
 		width: 40%;
-		height: auto;
+		height: 10vh;
 		bottom: 3rem;
 		z-index: -1;
 	}
