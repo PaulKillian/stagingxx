@@ -1,7 +1,6 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
 
-
 const endUpload = (label, file, element) => {
   setTimeout(function() {
     clearTimeout(uploading)
@@ -13,6 +12,7 @@ const endUpload = (label, file, element) => {
 }
 
 const fileNameReplace = (event) => {
+  console.log(process.env.HOST)
   const file_data = event.target.files[0]
   const storageRef = firebase.storage().ref();
   const resumesRef = storageRef.child(`resumes/${file_data.name}`);
@@ -113,10 +113,10 @@ form.addEventListener("submit", function(event) {
     });
 
     Email.send({
-      Host : 'aspmx.l.google.com',
-      Username : 'psk65lava@gmail.com',
-      Password : 'Sammy6565656565',
-      To : 'psk65lava@gmail.com',
+      Host : host,
+      Username : process.env.USERNAME,
+      Password : process.env.PASSWORD,
+      To : process.env.TO,
       From : data.email,
       Subject : `Resume submission from site, ${data.firstName} ${data.lastName}` ,
       Name: data.firstName,
@@ -128,6 +128,5 @@ form.addEventListener("submit", function(event) {
       Attachments: emailParams
     })
   });
-  
   loader()
 })
