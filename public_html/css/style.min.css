@@ -152,9 +152,7 @@
 	}
 	#send {
 		margin-bottom: 3rem;
-		margin-left: 1.4rem;
-		padding-top: .5rem;
-		padding-bottom: .5rem;
+		margin-left: 2.4rem;
 	}
 	.form-and-circle {
 		margin: auto;
@@ -178,7 +176,7 @@
 	.x-pattern {
 		width: 72%;
 		height: auto;
-		margin: 35px 0px 12px 0px;
+		margin: 55px 0px 12px 0px;
 	}
 	.submit-x-pattern {
 		width: 43%;
@@ -221,19 +219,13 @@
 		justify-content: end;
 		max-width: 68%;
 		margin-left: 12.5rem;
-		margin-top: 6.1rem;
+		margin-top: 6.8rem;
 	}
 	span, input, textarea, #send {
-		font-size: .5rem;
-	}
-	.inputfile + label {
-		padding: 4px;
+		font-size: .7rem;
 	}
 	textarea {
 		margin-bottom: 1.1rem;
-	}
-	.textarea-design {
-		height: 9.1rem;
 	}
 	.submit-x-pattern {
 		margin-bottom: 5rem;
@@ -283,6 +275,9 @@
     	bottom: -6.7rem;
 		width: 26%
 	}
+	.border-form {
+		padding: 1rem;
+	}
 	.custom-col {
 		flex: 0 0 41.66667%;
 		max-width: 41.66667%;
@@ -296,13 +291,6 @@
 	}
 	.submit-span {
 		font-size: 1rem;
-	}
-	input[text], 
-	input[email] {
-		margin-bottom: 0;
-	}
-	.input-design {
-		padding: 1rem .75rem;
 	}
 }
 
@@ -350,7 +338,7 @@
 		top: -9rem;
 	}
 	.position-solid-circle {
-		bottom: 2.5rem;
+		bottom: .7rem;
 	}
 	.submit-p {
 		margin-left: 13.5rem;

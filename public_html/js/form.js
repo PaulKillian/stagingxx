@@ -13,7 +13,7 @@ const endUpload = (label, file, element) => {
   setTimeout(function() {
     clearTimeout(uploading)
     label.parentElement.classList.add('background')
-    label.innerText = file
+    label.innerText = file.slice(0, 20) + "..."
     element.classList.add('inputfile-color-change')
     element.classList.remove('inputfile')
   }, 2000);
