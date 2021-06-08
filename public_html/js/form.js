@@ -1,6 +1,5 @@
 const main = document.getElementById('main');
 const form = document.forms[0];
-require('dotenv/config');
 
 const endUpload = (label, file, element) => {
   setTimeout(function() {
