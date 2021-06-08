@@ -90,14 +90,15 @@ form.addEventListener("submit", function(event) {
     files.push(file3.name)
   }
 
-  var storage = firebase.storage();
-  var pathReference = storage.ref();
-  var promises = [];
-  for (var i = 0; i <= files.length; i++) {
+  const storage = firebase.storage();
+  const pathReference = storage.ref();
+  const promises = [];
+  for (let i = 0; i <= files.length; i++) {
     if(files[i] === undefined) {
       continue;
     } else {
       promises.push(pathReference.child(`resumes/${files[i]}`).getDownloadURL());
+      console.log(promises)
     }
   }
 
@@ -127,5 +128,6 @@ form.addEventListener("submit", function(event) {
       Attachments: emailParams
     })
   });
+  
   loader()
 })
