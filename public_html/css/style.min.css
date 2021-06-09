@@ -87,8 +87,9 @@
 	}
 	.submit-elipse {
 		position: absolute;
-		width: 30%;
-		height: auto
+		width: 47%;
+		height: auto;
+		left: -8rem;
 	}
 	.hollow-circle {
 		width: 10%;
@@ -97,8 +98,8 @@
 	}
 	.submit-hollow-circle {
 		width: 7%;
-		height: 22px;
-		margin-left: 4rem;
+		height: 19px;
+		margin-left: 9rem;
 	}
 	p {
 		margin-top: 20px;
@@ -109,9 +110,9 @@
 		margin: 35px 0px 10px 0px
 	}
 	.submit-x-pattern {
-		width: 41%;
-		height: 25px;
-		margin: 60px 35px 30px 0px
+		width: 31%;
+		height: 21px;
+		margin: 60px 71px 30px 0px
 	}
 	input, textarea {
 		padding: 20px;
@@ -131,8 +132,8 @@
 		z-index: -1;
 	}
 	.submit-solid-circle {
-		width: 40%;
-		height: 75px;
+		width: 54%;
+    	height: 97px;
 	}
 	.custom-col {
 		flex: 1 0 90%;
@@ -140,7 +141,7 @@
 		margin: .5rem;
 	}
 	.submit {
-		width: 100%;
+		width: 83%;
 		height: 48px;
 		margin-top: 1rem;
 	}
@@ -152,6 +153,9 @@
 	}
 	p {
 		word-spacing: -2px;
+	}
+	.submit-p {
+		margin-left: 1.7rem;
 	}
 	#send {
 		margin-bottom: 3rem;
@@ -195,9 +199,9 @@
 		margin: 55px 0px 12px 0px;
 	}
 	.submit-x-pattern {
-		width: 43%;
-		height: auto;
-		margin-right: 1.9rem;
+		width: 37%;
+		height: 42px;
+		margin-right: 4.5rem;
 		margin-bottom: 6rem;
 	}
 	.hollow-circle {
@@ -206,12 +210,12 @@
 		margin: 40px 35px 0px 70px
 	}
 	.submit-hollow-circle {
-		margin-left: 13rem;
-		height: 32px;
+		margin-left: 16.5rem;
+		height: 34px;
 	}
 	.submit-solid-circle {
 		width: 40%;
-		height: 154px;
+		height: 157px;
 		bottom: 4rem;
 		position: relative;
 	}
@@ -242,6 +246,12 @@
 	}
 	.submit {
 		height: 86px;
+	}
+	.submit-p {
+		margin-left: 3.8rem;
+	}
+	.submit-elipse {
+		left: -18rem;
 	}
 }
 
