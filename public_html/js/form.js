@@ -46,7 +46,7 @@ const clearAndSubmission = () => {
           <div class="d-flex justify-content-start">
             <img class="submit-elipse col-7"src="assets/Elipse Pattern.png">
           </div>
-          <img class="submit" src="assets/Submission_Confirmed.png">
+          <img class="submit animated slideInDown delay--5s" src="assets/Submission_Confirmed.png">
         </div>
       </div>
     </div>
