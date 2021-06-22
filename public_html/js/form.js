@@ -46,7 +46,7 @@ const clearAndSubmission = () => {
           <div class="d-flex justify-content-start">
             <img class="submit-elipse col-7"src="assets/Elipse Pattern.png">
           </div>
-          <img class="submit animated slideInDown delay--5s" src="assets/Submission_Confirmed.png">
+          <img class="submit" src="assets/Submission_Confirmed.png">
         </div>
       </div>
     </div>
@@ -116,10 +116,10 @@ form.addEventListener("submit", function(event) {
     });
 
     Email.send({
-      SecureToken : "a4d1145c-bbaf-471e-a7d6-cd680cc48847",
-      To : "psk65lava@gmail.com",
+      SecureToken : "63ade2af-897d-40be-b86e-59c06d7a308c",
+      To : "careers@xxartists.com",
       From : data.email,
-      Subject : `Resume submission from site, ${data.firstName} ${data.lastName}` ,
+      Subject : `Resume from xxartists.com form, ${data.firstName} ${data.lastName}` ,
       Name: data.firstName,
       Body : `<html><h1>${data.firstName} ${data.lastName}</h1>
                 <h2>${data.position}</h2>

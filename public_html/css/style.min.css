@@ -444,7 +444,7 @@
 	}
 	#send {
 		margin-left: 3rem;
-		margin-left: max(25px, 4%);
+		margin-left: max(29px, 4%);
 	}
 }
 
