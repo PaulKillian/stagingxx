@@ -54,7 +54,7 @@ const clearAndSubmission = () => {
       <div class="col-11 col-md-9 mt-4">
         <p class="submit-p">Thank you for reaching out! A team member will be in<br>
         contact with you shortly. In the meaning time, please take<br>
-        a look at our site at <a href="https://inspiring-albattani-4f5ec3.netlify.app/"><span class="submit-span" style="color: rgb(221, 29, 27);">xxartists.com</span></a></p>
+        a look at our site at <a href="https://xxartists.com/"><span class="submit-span" style="color: rgb(221, 29, 27);">xxartists.com</span></a></p>
         <img class="submit-hollow-circle" src="assets/Circle Ring.png">
       </div>
       <div class="col-12 col-md-12 d-flex justify-content-end">
@@ -85,8 +85,8 @@ form.addEventListener("submit", function(event) {
   const entries = formData.entries();
   const data = Object.fromEntries(entries);
 
-  const file1 = $('#file-1').prop('files')[0];
-  const file2 = $('#file-2').prop('files')[0];
+  const file1 = event.target.files;
+  const file2 = event.target.files;
   const file3 = $('#file-3').prop('files')[0];
   const file3Length = document.getElementById('file-3').files.length
   let files = [file1.name, file2.name]
