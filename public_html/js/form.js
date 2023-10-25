@@ -116,7 +116,7 @@ form.addEventListener("submit", function(event) {
     });
 
     Email.send({
-      SecureToken : "63ade2af-897d-40be-b86e-59c06d7a308c",
+      SecureToken : process.env.TOKEN,
       To : "careers@xxartists.com",
       From : data.email,
       Subject : `Resume from xxartists.com form, ${data.firstName} ${data.lastName}` ,
